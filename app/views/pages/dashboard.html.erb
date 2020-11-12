@@ -1,0 +1,33 @@
+<div class="ui container">
+<div class="ui top attached tabular menu" >
+<div class="item">
+<h1><%= link_to 'Orders', orders_path, method: :get %></h1>
+</div>
+<div class="item">
+<h1><%= link_to 'Plants', plants_path, method: :get %></h1>
+</div>
+<div class="item active">
+<h1>Dashboard</h1>
+</div>
+<div class="right menu">
+    <div class="item">
+<%= button_to "logout", destroy_user_session_path, method: :delete, class:"ui big button"%>
+</div>
+</div>
+</div>
+
+<div class="ui bottom attached segment">
+
+<div>
+<p>total number of plants: <%= @plants.length %></p>
+<p>dead plants: <%= @plants.select{|plant| plant.condition == 'dead'}.length %></p>
+<p>total live plants: <%= @plants.select{|plant| plant.condition != 'dead'}.length %></p>
+<p>plants sold: <%= @plants.select{|plant| plant.sold == true }.length %></p>
+</div>
+
+<div>
+
+</div>
+
+
+</div>

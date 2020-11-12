@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  seller_name: MyString
+  country_origin: MyString
+  units: 1
+  total_price: 1
+  date_order: 2020-11-12
+  date_shipped: 2020-11-12
+  multiple: false
+
+two:
+  seller_name: MyString
+  country_origin: MyString
+  units: 1
+  total_price: 1
+  date_order: 2020-11-12
+  date_shipped: 2020-11-12
+  multiple: false

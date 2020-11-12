@@ -1,0 +1,48 @@
+<%= form_with(model: plant, local: true) do |form| %>
+  <% if plant.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(plant.errors.count, "error") %> prohibited this plant from being saved:</h2>
+
+      <ul>
+        <% plant.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label "seller name" %>
+    <%= form.collection_select :order_id, @order , :id, :name_and_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :unit_price %>
+    <%= form.number_field :unit_price %>
+  </div>
+
+  <div class="field">
+    <%= form.label :arrival_date %>
+    <%= form.date_select :arrival_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :condition %>
+    <%= form.select :condition, ['dead', 'poor', 'fair', 'good', 'excellent'] %>
+  </div>
+
+  <div class="field">
+    <%= form.label :avatar %>
+    <%= form.file_field :avatar %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit class: "ui button"%>
+  </div>
+<% end %>
+

@@ -1,0 +1,42 @@
+<%= form_with(model: plant_note, local: true) do |form| %>
+  <% if plant_note.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(plant_note.errors.count, "error") %> prohibited this plant_note from being saved:</h2>
+
+      <ul>
+        <% plant_note.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.select :title, ['update', 'illness', 'cutting'] %>
+  </div>
+
+  <div class="field">
+    <%= form.label :note_date %>
+    <%= form.date_select :note_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :text_field %>
+    <%= form.text_area :text_field %>
+  </div>
+
+  <div class="field">
+    <%= form.label :plant_id %>
+    <%= form.select :plant_id,  options_from_collection_for_select(@plant, "id", "plant_name_and_info", params[:plant_id]) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :plant_image %>
+    <%= form.file_field :plant_image %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

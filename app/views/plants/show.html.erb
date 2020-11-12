@@ -1,0 +1,115 @@
+<div class="ui container">
+  <br/>
+  <div class="ui segment">
+  <div class="ui grid">
+    <div class="eight wide column">
+      <p>
+        <strong>Seller:</strong>
+        <%=  @plant.order.seller_name %>
+      </p>
+
+      <p>
+        <strong>Id:</strong>
+        <%= @plant.id %>
+      </p>
+
+      <p>
+        <strong>Name:</strong>
+        <%= @plant.name %>
+      </p>
+
+      <p>
+        <strong>Unit price:</strong>
+        <%= @plant.unit_price %>
+      </p>
+
+      <p>
+        <strong>Arrival date:</strong>
+        <% if @plant.arrival_date != nil %>
+        <%= @plant.arrival_date.month %>/<%= @plant.arrival_date.day %>/<%= @plant.arrival_date.year %>
+        <%else%>
+        <td id="plant">Not Recorded</td>
+        <%end%>
+      </p>
+
+
+      <p>
+        <strong>Days In Box:</strong>
+        <% if @plant.order.date_shipped != nil %>
+          <%= %"#{@plant.days_in_box} days" %>
+        <%else%>
+          <td id="plant">Not Recorded</td>
+        <%end%>
+      </p>
+
+      <p>
+        <strong>Condition:</strong>
+        <%= @plant.condition %>
+      </p>
+
+      <p>
+        <strong>Recovery date:</strong>
+        <% if @plant.arrival_date != nil %>
+          <%= @plant.recovered? %>
+        <%else%>
+          <td id="plant">Not Recorded</td>
+        <%end%>
+      </p>
+
+      <% if @plant.sold == true %>
+      <p>
+        <strong>Sold:</strong>
+        <%= @plant.sold %>
+      </p>
+
+      <p>
+        <strong>Price:</strong>
+        <%= @plant.price %>
+      </p>
+      <% else %>
+      <% end %>
+  </div>
+
+  <div class="eight wide column">
+      <%# <% if @plant.avatar.attached? %> %>
+        <%# <%= image_tag @plant.avatar %> %>
+      <%# <% end %> %>
+  </div>
+
+<br/>
+  <div class="ui breadcrumb">
+  <strong><%= link_to 'Edit', edit_plant_path(@plant), class:"section" %></strong>
+  <div class="divider"> / </div>
+  <strong><%= link_to 'Back', plants_path, class:"section" %></strong>
+  <div class="divider"> / </div>
+  <strong><%= link_to 'New Note', new_plant_note_path({:plant_id => @plant.id}) %></strong>
+  </div>
+
+<%# ends grid layout %>
+</div>
+<br/>
+<%# ends segment box %>
+</div>
+
+<div class="ui three cards">
+<% @plant.plant_notes.each do |note|%>
+<div class="ui fluid card">
+<div class="content">
+<p class="header"><%= note.title %></p>
+<%# <% if note.plant_image.attached? %>
+   <%# <%= image_tag note.plant_image, class: "image" %> %>
+<%# <% end %> %> %>
+<p class="meta">Date: <%= note.note_date.month %>/<%= note.note_date.day %>/<%= note.note_date.year %></p>
+<p class="description">Note: <%= note.text_field %></p>
+  <div class="ui breadcrumb">
+      <%= link_to 'Edit', edit_plant_note_path(note), class:"section"%>
+      <div class="divider"> / </div>
+      <%= link_to 'X', plant_note_path(note), class:"section", method: :delete, data: { confirm: 'Are you sure?' } %>
+  </div>
+</div>
+</div>
+<% end %>
+</div>
+
+<%# ends container %>
+</div>

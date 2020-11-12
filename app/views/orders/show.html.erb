@@ -1,0 +1,102 @@
+<div class="ui container">
+<br/>
+<div class="ui segment">
+<div class="ui grid">
+  <div class="six wide column">
+      <p>
+        <strong>Seller name:</strong>
+        <%= @order.seller_name %>
+      </p>
+
+      <p>
+        <strong>Country origin:</strong>
+        <%= @order.country_origin %>
+      </p>
+      
+      <% if @order.units != nil %>
+      <p>
+        <strong>Units:</strong>
+        <%= @order.units %>
+      </p>
+      <% end %>
+
+    <% if @order.total_price != nil %>
+      <p>
+        <strong>Total price:</strong>
+        $<%= @order.total_price %>
+      </p>
+    <% end %>
+
+      <p>
+        <strong>Date order:</strong>
+        <% if @order.date_order != nil %>
+        <%= @order.date_order.month %>/<%= @order.date_order.day %>/<%= @order.date_order.year %>
+        <% else %>
+        Not Recorded
+        <% end %>
+      </p>
+
+      <p>
+        <strong>Date shipped:</strong>
+    <% if @order.date_shipped != nil %>
+        <%= "#{@order.date_shipped.month}/#{@order.date_shipped.day}/#{@order.date_shipped.year}" %> 
+        <%else%>
+        Not Shipped Yet 
+      </p>
+    <% end %>
+      <p>
+        <strong>Multiple:</strong>
+        <%= @order.multiple %>
+      </p>
+  </div>
+
+<div class="ten wide column">
+    <strong>Notes:</strong>
+    <br/>
+    <br/>
+    <% @order.order_notes.each do |note| %>
+    <div class="ui breadcrumb">
+    <%= link_to 'Edit', edit_order_note_path(note), class:"section"%>
+    <div class="divider"> / </div>
+    <%= link_to 'X', order_note_path(note), class:"section", method: :delete, data: { confirm: 'Are you sure?' } %>
+    <div class="divider"> / </div>
+    <p class="section"><%= note.information %></p>
+    <br/>
+    <br/>
+    </div>
+    <% end %>
+</div>
+</div>
+<br/>
+<div class="ui breadcrumb">
+<strong><%= link_to 'Edit', edit_order_path(@order), class:"section"%></strong>
+<div class="divider"> / </div>
+<strong><%= link_to 'Back', orders_path, class:"section" %></strong>
+<div class="divider"> / </div>
+<strong><%= link_to 'New Note', new_order_note_path({:order_id => @order.id}) %></strong>
+</div>
+<br>
+</div>
+<br>
+<div class="ui three column grid">
+<% @order.plants.each do |plant| %>
+<div class="column">
+<div class="ui fluid card">
+<div class="content">
+<p class="header"><%= link_to plant.name, plant_path(plant) %></p>
+<%# <% if plant.avatar.attached? %> %>
+   <%# <%= image_tag plant.avatar %> %>
+<%# <% end %> %>
+<br/>
+<p>id:<%= plant.id%></p>
+<p>condition: <%= plant.condition%></p>
+<% if @order.date_order != nil %>
+<p>recovered? <%= plant.recovered? %></p>
+<% end %>
+<p>sold? <%= plant.sold %></p>
+</div>
+</div>
+</div>
+<% end %>
+</div>
+</div>

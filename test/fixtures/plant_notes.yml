@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  note_date: 2020-11-12
+  text_field: MyText
+  plant_id: 1
+
+two:
+  title: MyString
+  note_date: 2020-11-12
+  text_field: MyText
+  plant_id: 1

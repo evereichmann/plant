@@ -1,0 +1,22 @@
+<%= form_with(model: order_note, local: true) do |form| %>
+  <% if order_note.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(order_note.errors.count, "error") %> prohibited this order_note from being saved:</h2>
+
+      <ul>
+        <% order_note.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :information %>
+    <%= form.text_area :information %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit class: "ui button"%>
+  </div>
+<% end %>
