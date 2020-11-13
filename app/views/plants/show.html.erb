@@ -7,12 +7,12 @@
         <strong>Seller:</strong>
         <%=  @plant.order.seller_name %>
       </p>
-
+    <% if @plant.tag_number != nil%>
       <p>
-        <strong>Id:</strong>
-        <%= @plant.id %>
+        <strong>Tag Id:</strong>
+        <%= @plant.tag_number %>
       </p>
-
+    <% end %>
       <p>
         <strong>Name:</strong>
         <%= @plant.name %>
@@ -71,9 +71,9 @@
   </div>
 
   <div class="eight wide column">
-      <%# <% if @plant.avatar.attached? %> %>
-        <%# <%= image_tag @plant.avatar %> %>
-      <%# <% end %> %>
+      <%# <% if @plant.avatar.attached? %> 
+        <%# <%= image_tag @plant.avatar %> 
+      <%# <% end %> 
   </div>
 
 <br/>
@@ -97,8 +97,8 @@
 <div class="content">
 <p class="header"><%= note.title %></p>
 <%# <% if note.plant_image.attached? %>
-   <%# <%= image_tag note.plant_image, class: "image" %> %>
-<%# <% end %> %> %>
+   <%# <%= image_tag note.plant_image, class: "image" %> 
+<%# <% end %> 
 <p class="meta">Date: <%= note.note_date.month %>/<%= note.note_date.day %>/<%= note.note_date.year %></p>
 <p class="description">Note: <%= note.text_field %></p>
   <div class="ui breadcrumb">

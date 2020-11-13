@@ -36,7 +36,11 @@
     <% @plants.each do |plant| %>
       <% if plant.condition != "dead" && plant.sold != true %>
       <tr>
-        <td id="plant"><%= plant.id %></td>
+        <% if plant.tag_number != nil %>
+        <td id="plant"><%= plant.tag_number %></td>
+      <% else %>
+        <td id="plant"></td>  
+      <% end %>  
         <td id="plant"><%= plant.name %></td>
         <td id="plant">$<%= plant.unit_price %></td>
         <% if plant.arrival_date != nil%>
@@ -84,11 +88,24 @@
     <% @plants.each do |plant| %>
       <% if plant.sold == true %>
       <tr>
-        <td id="plant"><%= plant.id %></td>
+           <% if plant.tag_number != nil %>
+        <td id="plant"><%= plant.tag_number %></td>
+      <% else %>
+        <td id="plant"></td>  
+      <% end %> 
         <td id="plant"><%= plant.name %></td>
         <td id="plant">$<%= plant.unit_price %></td>
-        <td id="plant"><%= plant.arrival_date.month %>/<%= plant.arrival_date.day %>/<%= plant.arrival_date.year %></td>
-        <td id="plant"><%= plant.recovered? %></td>
+        <% if plant.arrival_date != nil%>
+          <td id="plant"><%= plant.arrival_date.month %>/<%= plant.arrival_date.day %>/<%= plant.arrival_date.year %></td>
+        <%else%>
+          <td id="plant">Not Recorded</td>
+        <%end%>
+        <td id="plant"><%= plant.condition %></td>
+        <% if plant.arrival_date != nil%>
+          <td id="plant"><%= plant.recovered?  %></td>
+        <%else%>
+          <td id="plant">Not Recorded</td>
+        <%end%>
         <td id="plant">$<%= plant.price %></td>
         <% money = plant.price - plant.unit_price %>
         <td id="plant">$<%= money %></td>
@@ -120,11 +137,24 @@
       <% if plant.condition == "dead" %>
       <p></p>
       <tr>
-        <td id="plant"><%= plant.id %></td>
+           <% if plant.tag_number != nil %>
+        <td id="plant"><%= plant.tag_number %></td>
+      <% else %>
+        <td id="plant"></td>  
+      <% end %> 
         <td id="plant"><%= plant.name %></td>
         <td id="plant">$<%= plant.unit_price %></td>
-        <td id="plant"><%= plant.arrival_date.month %>/<%= plant.arrival_date.day %>/<%= plant.arrival_date.year %></td>
-        <td id="plant"><%= plant.recovered? %></td>
+        <% if plant.arrival_date != nil%>
+          <td id="plant"><%= plant.arrival_date.month %>/<%= plant.arrival_date.day %>/<%= plant.arrival_date.year %></td>
+        <%else%>
+          <td id="plant">Not Recorded</td>
+        <%end%>
+        <td id="plant"><%= plant.condition %></td>
+        <% if plant.arrival_date != nil%>
+          <td id="plant"><%= plant.recovered?  %></td>
+        <%else%>
+          <td id="plant">Not Recorded</td>
+        <%end%>
         <td id="plant"><%= link_to 'Show', plant %></td>
         <td id="plant"><%= link_to 'Edit', edit_plant_path(plant) %></td>
       </tr>

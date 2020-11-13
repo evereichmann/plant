@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 2020_11_12_210131) do
   end
 
   create_table "plants", force: :cascade do |t|
+    t.integer "tag_number"
     t.integer "order_id"
     t.string "name"
     t.integer "unit_price"
