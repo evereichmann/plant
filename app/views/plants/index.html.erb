@@ -36,8 +36,8 @@
     <% @plants.each do |plant| %>
       <% if plant.condition != "dead" && plant.sold != true %>
       <tr>
-        <% if plant.tag_number != nil %>
-        <td id="plant"><%= plant.tag_number %></td>
+        <% if plant.tag != nil %>
+        <td id="plant"><%= plant.tag %></td>
       <% else %>
         <td id="plant"></td>  
       <% end %>  
@@ -88,8 +88,8 @@
     <% @plants.each do |plant| %>
       <% if plant.sold == true %>
       <tr>
-           <% if plant.tag_number != nil %>
-        <td id="plant"><%= plant.tag_number %></td>
+           <% if plant.tag != nil %>
+        <td id="plant"><%= plant.tag %></td>
       <% else %>
         <td id="plant"></td>  
       <% end %> 
@@ -137,8 +137,8 @@
       <% if plant.condition == "dead" %>
       <p></p>
       <tr>
-           <% if plant.tag_number != nil %>
-        <td id="plant"><%= plant.tag_number %></td>
+           <% if plant.tag != nil %>
+        <td id="plant"><%= plant.tag %></td>
       <% else %>
         <td id="plant"></td>  
       <% end %> 
