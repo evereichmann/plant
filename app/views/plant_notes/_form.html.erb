@@ -31,11 +31,6 @@
     <%= form.select :plant_id,  options_from_collection_for_select(@plant, "id", "plant_name_and_info", params[:plant_id]) %>
   </div>
 
-  <div class="field">
-    <%= form.label :plant_image %>
-    <%= form.file_field :plant_image %>
-  </div>
-
   <div class="actions">
     <%= form.submit %>
   </div>
