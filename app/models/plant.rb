@@ -1,5 +1,5 @@
 class Plant < ApplicationRecord
-    belongs_to :order
+  belongs_to :order
 #   has_one_attached :avatar
   has_many :plant_notes
 

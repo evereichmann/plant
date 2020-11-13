@@ -44,7 +44,6 @@ ActiveRecord::Schema.define(version: 2020_11_12_210131) do
   end
 
   create_table "plants", force: :cascade do |t|
-    t.integer "tag"
     t.integer "order_id"
     t.string "name"
     t.integer "unit_price"
@@ -53,6 +52,7 @@ ActiveRecord::Schema.define(version: 2020_11_12_210131) do
     t.date "recovery_date"
     t.boolean "sold"
     t.integer "price"
+    t.integer "tag"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
