@@ -13,3 +13,88 @@
  *= require_tree .
  *= require_self
  */
+
+ @import "semantic-ui";
+ @import "semantic-ui/collections/menu";
+
+
+ table { 
+    width: 100%; 
+    border-collapse: collapse; 
+  }
+  /* Zebra striping */
+  tr:nth-of-type(odd) { 
+    background: #eee; 
+  }
+  th { 
+    background: #333; 
+    color: white; 
+    font-weight: bold; 
+  }
+  td, th { 
+    padding: 6px; 
+    border: 1px solid #ccc; 
+    text-align: left; 
+  }
+
+
+
+
+
+
+@media 
+only screen and (max-width: 760px),
+(min-device-width: 768px) and (max-device-width: 1024px)  {
+
+    /* Force table to not be like tables anymore */
+    table, thead, tbody, th, td, tr { 
+        display: block; 
+    }
+    
+    /* Hide table headers (but not display: none;, for accessibility) */
+    thead tr { 
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+    
+    tr { border: 1px solid #ccc; text-align: right;}
+    
+    td { 
+        /* Behave  like a "row" */
+        border: none;
+        border-bottom: 1px solid #eee; 
+        position: relative;
+        padding-left: 50%;
+        text-align: right; 
+    }
+    
+    td:before { 
+        /* Now like a table header */
+        position: absolute;
+        /* Top/left values mimic padding */
+        top: 6px;
+        left: 6px;
+        width: 45%; 
+        padding-right: 10px; 
+        white-space: nowrap;
+    }
+    
+    /*
+    Label the data
+    */
+    #order:nth-of-type(1):before { content: "Seller Name"; }
+    #order:nth-of-type(2):before { content: "Origin Country"; }
+    #order:nth-of-type(3):before { content: "Unit"; }
+    #order:nth-of-type(4):before { content: "Total Price"; }
+    #order:nth-of-type(5):before { content: "Data order"; }
+    #order:nth-of-type(6):before { content: "Data Shipped"; }
+    #order:nth-of-type(7):before { content: "Multiple?"; }
+    
+    #plant:nth-of-type(1):before { content: "Plant Id"; }
+    #plant:nth-of-type(2):before { content: "Name"; }
+    #plant:nth-of-type(3):before { content: "Unit Price"; }
+    #plant:nth-of-type(4):before { content: "Arrival Date"; }
+    #plant:nth-of-type(5):before { content: "Condition"; }
+    #plant:nth-of-type(6):before { content: "Recovery date"; }
+}
