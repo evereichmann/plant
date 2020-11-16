@@ -19,7 +19,7 @@ class Plant < ApplicationRecord
   end
 
   def plant_name_and_info
-    "#{name} | #{id} | #{recovered?}"
+    "#{name} | #{tag} | #{recovered?}"
   end  
 
   def days_in_box
