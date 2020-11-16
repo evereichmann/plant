@@ -14,10 +14,6 @@
  *= require_self
  */
 
- @import "semantic-ui";
- @import "semantic-ui/collections/menu";
-
-
  table { 
     width: 100%; 
     border-collapse: collapse; 
