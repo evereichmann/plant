@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 2020_11_16_191412) do
     t.integer "tag"
     t.date "cutting_date"
     t.integer "generation"
+    t.string "condition"
     t.boolean "sold"
     t.decimal "price"
     t.integer "parent_id"

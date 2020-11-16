@@ -84,7 +84,7 @@
 
   <tbody>
     <% @cuttings.each do |cutting| %>
-    <% if cutting.mother == true  && cutting.sold == false %>
+    <% if cutting.mother == true  && cutting.sold == false && cutting.condition != "dead" %>
       <tr>
         <td id="cutting"><%= cutting.tag %></td>
         <td id="cutting"><%= cutting.name %></td>
@@ -199,8 +199,17 @@
         <td id="dead"><%= link_to 'Show', plant %></td>
         <td id="dead"><%= link_to 'Edit', edit_plant_path(plant) %></td>
       </tr>
-      <% else%>
       <% end %>
+    <% end %>
+    <% @cuttings.each do |cutting| %>
+      <% if cutting.condition == "dead"%>
+       <td id="dead"><%= cutting.tag %></td>
+       <td id="dead"><%= cutting.name %></td>
+       <td id="dead">Cutting</td>
+       <td id="dead"><%= cutting.cutting_date.month %>/<%= cutting.cutting_date.day %>/<%= cutting.cutting_date.year %></td>
+               <td id="cutting"><%= link_to 'Show', cutting %></td>
+        <td id="cutting"><%= link_to 'Edit', edit_cutting_path(cutting, {:name => cutting.name , :generation => cutting.generation , :parent_id => cutting.parent_id , :parent_type => cutting.parent_type }) %></td>
+       <% end %>
     <% end %>
   </tbody>
 </table>
