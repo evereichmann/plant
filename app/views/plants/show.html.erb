@@ -20,7 +20,7 @@
 
       <p>
         <strong>Unit price:</strong>
-        <%= @plant.unit_price %>
+        $<%= @plant.unit_price %>
       </p>
 
       <p>
@@ -74,9 +74,7 @@
       <% if @plant.cuttings != nil %> 
       <ul>
         <% @plant.cuttings.each do |cutting| %> 
-          <li><%= cutting.id %></li>
-          <li><%= cutting.name %></li>
-          <li><%= cutting.generation %></li>
+          <li><%= link_to "Tag: #{cutting.tag} | Name: #{cutting.name} | Gen: #{cutting.generation}", cutting_path(cutting)  %></li>
         <% end %>   
       </ul>  
       <% end %> 
@@ -89,6 +87,8 @@
   <strong><%= link_to 'Back', plants_path, class:"section" %></strong>
   <div class="divider"> / </div>
   <strong><%= link_to 'New Note', new_plant_note_path({:plant_id => @plant.id}) %></strong>
+  <div class="divider"> / </div>
+  <strong><%= link_to 'New Cutting', new_cutting_path({:name => @plant.name , :generation => "1" , :parent_id => @plant.id , :parent_type => "Plant" }) %></strong>
   </div>
 
 <%# ends grid layout %>

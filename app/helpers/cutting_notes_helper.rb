@@ -1,0 +1,2 @@
+module CuttingNotesHelper
+end

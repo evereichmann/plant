@@ -1,0 +1,2 @@
+class CuttingNote < ApplicationRecord
+end

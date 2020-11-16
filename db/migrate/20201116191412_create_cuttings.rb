@@ -5,6 +5,7 @@ class CreateCuttings < ActiveRecord::Migration[6.0]
       t.integer :tag
       t.date :cutting_date
       t.integer :generation
+      t.string :condition
       t.boolean :sold
       t.decimal :price
       t.integer :parent_id

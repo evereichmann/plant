@@ -14,6 +14,7 @@ class CuttingsController < ApplicationController
 
   # GET /cuttings/new
   def new
+    @plant = Plant.all
     @cutting = Cutting.new
   end
 
@@ -69,6 +70,6 @@ class CuttingsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def cutting_params
-      params.require(:cutting).permit(:name, :tag, :cutting_date, :generation, :sold, :price, :parent_id, :parent_type, :mother)
+      params.require(:cutting).permit(:name, :tag, :cutting_date, :generation, :sold, :price, :parent_id, :parent_type, :mother, :condition)
     end
 end
