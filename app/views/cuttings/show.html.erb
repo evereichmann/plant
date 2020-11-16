@@ -1,5 +1,5 @@
-<p id="notice"><%= notice %></p>
 
+ <strong><%= link_to 'New Cutting', new_cutting_path({:name => @cutting.name , :generation => @cutting.generation + 1 , :parent_id => @cutting.id , :parent_type => "Cutting" }) %></strong>
 <p>
   <strong>Name:</strong>
   <%= @cutting.name %>
@@ -12,7 +12,7 @@
 
 <p>
   <strong>Cutting date:</strong>
-  <%= @cutting.cutting_date %>
+  <%= @cutting.cutting_date.month %>/<%= @cutting.cutting_date.day %>/<%= @cutting.cutting_date.year %>
 </p>
 
 <p>
@@ -45,18 +45,16 @@
   <%= @cutting.mother %>
 </p>
 
-
 <% if @cutting.offspring != nil %>
 <ul>
   <% @cutting.offspring.each do |cutting| %>
-    <li><%= cutting.id %></li>
-    <li><%= cutting.name %></li>
-    <li><%= cutting.generation %></li>
+  <p><%= cutting.cutting_date - Date.today %></p>
+    <li><%= link_to "Tag: #{cutting.tag} | Name: #{cutting.name} | Gen: #{cutting.generation}", cutting_path(cutting)  %></li>
   <% end %>
 </ul>  
 <% end %>
 
-<%= link_to 'Edit', edit_cutting_path(@cutting) %> |
+<%= link_to 'Edit', edit_cutting_path(@cutting , {:name => @cutting.name , :generation => @cutting.generation , :parent_id => @cutting.parent_id , :parent_type => @cutting.parent_type }) %> |
 <% if @cutting.mother == false %>
 <%= link_to 'Back', cuttings_path %>
 <% else %>

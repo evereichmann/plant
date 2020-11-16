@@ -14,6 +14,7 @@ class CuttingsController < ApplicationController
 
   # GET /cuttings/new
   def new
+    @plant = Plant.all
     @cutting = Cutting.new
   end
 

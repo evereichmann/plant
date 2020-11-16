@@ -42,11 +42,11 @@
       <tr>
         <td id="cutting"><%= cutting.tag %></td>
         <td id="cutting"><%= cutting.name %></td>
-        <td id="cutting"><%= cutting.cutting_date %></td>
+        <td id="cutting"><%= cutting.cutting_date.month %>/<%= cutting.cutting_date.day %>/<%= cutting.cutting_date.year %></td>
         <td id="cutting"><%= cutting.generation %></td>
         <td id="cutting"><%= cutting.parent_type %></td>
         <td id="cutting"><%= link_to 'Show', cutting %></td>
-        <td id="cutting"><%= link_to 'Edit', edit_cutting_path(cutting) %></td>
+        <td id="cutting"><%= link_to 'Edit', edit_cutting_path(cutting, {:name => cutting.name , :generation => cutting.generation , :parent_id => cutting.parent_id , :parent_type => cutting.parent_type }) %></td>
         <td id="cutting"><%= link_to 'Destroy', cutting, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
