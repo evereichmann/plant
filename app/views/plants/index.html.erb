@@ -121,30 +121,47 @@
       <% if plant.sold == true %>
       <tr>
            <% if plant.tag != nil %>
-        <td id="plant"><%= plant.tag %></td>
+        <td id="sold"><%= plant.tag %></td>
       <% else %>
-        <td id="plant"></td>  
+        <td id="sold"></td>  
       <% end %> 
-        <td id="plant"><%= plant.name %></td>
-        <td id="plant">$<%= plant.unit_price %></td>
+        <td id="sold"><%= plant.name %></td>
+        <td id="sold">$<%= plant.unit_price %></td>
         <% if plant.arrival_date != nil%>
-          <td id="plant"><%= plant.arrival_date.month %>/<%= plant.arrival_date.day %>/<%= plant.arrival_date.year %></td>
+          <td id="sold"><%= plant.arrival_date.month %>/<%= plant.arrival_date.day %>/<%= plant.arrival_date.year %></td>
         <%else%>
-          <td id="plant">Not Recorded</td>
+          <td id="sold">Not Recorded</td>
         <%end%>
-        <td id="plant"><%= plant.condition %></td>
+        <td id="sold"><%= plant.condition %></td>
         <% if plant.arrival_date != nil%>
-          <td id="plant"><%= plant.recovered?  %></td>
+          <td id="sold"><%= plant.recovered?  %></td>
         <%else%>
-          <td id="plant">Not Recorded</td>
+          <td id="sold">Not Recorded</td>
         <%end%>
-        <td id="plant">$<%= plant.price %></td>
+        <td id="sold">$<%= plant.price %></td>
         <% money = plant.price - plant.unit_price %>
-        <td id="plant">$<%= money %></td>
-        <td id="plant"><%= link_to 'Show', plant %></td>
-        <td id="plant"><%= link_to 'Edit', edit_plant_path(plant) %></td>
+        <td id="sold">$<%= money %></td>
+        <td id="sold"><%= link_to 'Show', plant %></td>
+        <td id="sold"><%= link_to 'Edit', edit_plant_path(plant) %></td>
       </tr>
       <% end %>
+    <% end %>
+  </tbody>
+  <tbody>
+    <% @cuttings.each do |cutting| %>
+    <% if cutting.mother == true  && cutting.sold == true %>
+      <tr>
+        <td id="sold"><%= cutting.tag %></td>
+        <td id="sold"><%= cutting.name %></td>
+        <td id="sold"></td>
+        <td id="sold"><%= cutting.cutting_date %></td>
+        <td id="sold"></td>
+        <td id="sold">$<%= cutting.price %></td>
+        <td id="sold">$<%= cutting.price %></td>
+        <td id="sold"><%= link_to 'Show', cutting %></td>
+        <td id="sold"><%= link_to 'Edit', edit_cutting_path(cutting) %></td>
+      </tr>
+    <% end %>
     <% end %>
   </tbody>
 </table>
@@ -158,7 +175,6 @@
       <th>Name</th>
       <th>Unit price</th>
       <th>Arrival date</th>
-      <th>Recovery date</th>
       <th colspan="2"></th>
     </tr>
   </thead>
@@ -169,25 +185,19 @@
       <p></p>
       <tr>
            <% if plant.tag != nil %>
-        <td id="plant"><%= plant.tag %></td>
+        <td id="dead"><%= plant.tag %></td>
       <% else %>
-        <td id="plant"></td>  
+        <td id="dead"></td>  
       <% end %> 
-        <td id="plant"><%= plant.name %></td>
-        <td id="plant">$<%= plant.unit_price %></td>
+        <td id="dead"><%= plant.name %></td>
+        <td id="dead">$<%= plant.unit_price %></td>
         <% if plant.arrival_date != nil%>
-          <td id="plant"><%= plant.arrival_date.month %>/<%= plant.arrival_date.day %>/<%= plant.arrival_date.year %></td>
+          <td id="dead"><%= plant.arrival_date.month %>/<%= plant.arrival_date.day %>/<%= plant.arrival_date.year %></td>
         <%else%>
-          <td id="plant">Not Recorded</td>
+          <td id="dead">Not Recorded</td>
         <%end%>
-        <td id="plant"><%= plant.condition %></td>
-        <% if plant.arrival_date != nil%>
-          <td id="plant"><%= plant.recovered?  %></td>
-        <%else%>
-          <td id="plant">Not Recorded</td>
-        <%end%>
-        <td id="plant"><%= link_to 'Show', plant %></td>
-        <td id="plant"><%= link_to 'Edit', edit_plant_path(plant) %></td>
+        <td id="dead"><%= link_to 'Show', plant %></td>
+        <td id="dead"><%= link_to 'Edit', edit_plant_path(plant) %></td>
       </tr>
       <% else%>
       <% end %>

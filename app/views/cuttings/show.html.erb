@@ -57,4 +57,8 @@
 <% end %>
 
 <%= link_to 'Edit', edit_cutting_path(@cutting) %> |
+<% if @cutting.mother == false %>
 <%= link_to 'Back', cuttings_path %>
+<% else %>
+<%= link_to 'Back', plants_path %>
+<% end %>

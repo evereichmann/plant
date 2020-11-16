@@ -10,7 +10,7 @@
 <h1><%= link_to 'Cuttings', cuttings_path, method: :get %></h1> 
 </div>
 <div class="item">
-<h1>Dashboard</h1>
+<h1><%= link_to 'Dashboard', pages_dashboard_path, method: :get %></h1> 
 </div>
 <div class="right menu">
     <div class="item">
@@ -27,15 +27,11 @@
 <table class="ui celled unstackable table">
   <thead>
     <tr>
-      <th>Name</th>
       <th>Tag</th>
+      <th>Name</th>
       <th>Cutting date</th>
       <th>Generation</th>
-      <th>Sold</th>
-      <th>Price</th>
       <th>Parent</th>
-      <th>Parent type</th>
-      <th>Mother</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -44,18 +40,14 @@
     <% @cuttings.each do |cutting| %>
     <% if cutting.mother != true %>
       <tr>
-        <td><%= cutting.name %></td>
-        <td><%= cutting.tag %></td>
-        <td><%= cutting.cutting_date %></td>
-        <td><%= cutting.generation %></td>
-        <td><%= cutting.sold %></td>
-        <td><%= cutting.price %></td>
-        <td><%= cutting.parent_id %></td>
-        <td><%= cutting.parent_type %></td>
-        <td><%= cutting.mother %></td>
-        <td><%= link_to 'Show', cutting %></td>
-        <td><%= link_to 'Edit', edit_cutting_path(cutting) %></td>
-        <td><%= link_to 'Destroy', cutting, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td id="cutting"><%= cutting.tag %></td>
+        <td id="cutting"><%= cutting.name %></td>
+        <td id="cutting"><%= cutting.cutting_date %></td>
+        <td id="cutting"><%= cutting.generation %></td>
+        <td id="cutting"><%= cutting.parent_type %></td>
+        <td id="cutting"><%= link_to 'Show', cutting %></td>
+        <td id="cutting"><%= link_to 'Edit', edit_cutting_path(cutting) %></td>
+        <td id="cutting"><%= link_to 'Destroy', cutting, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
     <% end %>

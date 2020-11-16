@@ -91,10 +91,29 @@ only screen and (max-width: 760px),
     #order:nth-of-type(6):before { content: "Data Shipped"; }
     #order:nth-of-type(7):before { content: "Multiple?"; }
     
-    #plant:nth-of-type(1):before { content: "Plant Id"; }
+    #plant:nth-of-type(1):before { content: "Tag Number"; }
     #plant:nth-of-type(2):before { content: "Name"; }
     #plant:nth-of-type(3):before { content: "Unit Price"; }
     #plant:nth-of-type(4):before { content: "Arrival Date"; }
     #plant:nth-of-type(5):before { content: "Condition"; }
     #plant:nth-of-type(6):before { content: "Recovery date"; }
+
+    #cutting:nth-of-type(1):before { content: "Tag Number"; }
+    #cutting:nth-of-type(2):before { content: "Name"; }
+    #cutting:nth-of-type(3):before { content: "Cutting Date"; }
+    #cutting:nth-of-type(4):before { content: "Generation"; }
+    #cutting:nth-of-type(5):before { content: "Parent"; }
+
+    #sold:nth-of-type(1):before { content: "Tag Number"; }
+    #sold:nth-of-type(2):before { content: "Name"; }
+    #sold:nth-of-type(3):before { content: "Unit Price"; }
+    #sold:nth-of-type(4):before { content: "Arrival/Cutting Date"; }
+    #sold:nth-of-type(5):before { content: "Recovery date"; }
+    #sold:nth-of-type(6):before { content: "Price"; }
+    #sold:nth-of-type(7):before { content: "Profit"; }
+
+    #dead:nth-of-type(1):before { content: "Tag Number"; }
+    #dead:nth-of-type(2):before { content: "Name"; }
+    #dead:nth-of-type(3):before { content: "Unit Price"; }
+    #dead:nth-of-type(4):before { content: "Arrival Date"; }
 }
