@@ -10,10 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_12_210131) do
+ActiveRecord::Schema.define(version: 2020_11_16_191412) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "cuttings", force: :cascade do |t|
+    t.string "name"
+    t.integer "tag"
+    t.date "cutting_date"
+    t.integer "generation"
+    t.boolean "sold"
+    t.decimal "price"
+    t.integer "parent_id"
+    t.string "parent_type"
+    t.boolean "mother"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "order_notes", force: :cascade do |t|
     t.text "information"
@@ -26,7 +40,7 @@ ActiveRecord::Schema.define(version: 2020_11_12_210131) do
     t.string "seller_name"
     t.string "country_origin"
     t.integer "units"
-    t.integer "total_price"
+    t.decimal "total_price"
     t.date "date_order"
     t.date "date_shipped"
     t.boolean "multiple"
@@ -46,12 +60,12 @@ ActiveRecord::Schema.define(version: 2020_11_12_210131) do
   create_table "plants", force: :cascade do |t|
     t.integer "order_id"
     t.string "name"
-    t.integer "unit_price"
+    t.decimal "unit_price"
     t.date "arrival_date"
     t.string "condition"
     t.date "recovery_date"
     t.boolean "sold"
-    t.integer "price"
+    t.decimal "price"
     t.integer "tag"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

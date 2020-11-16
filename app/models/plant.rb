@@ -1,7 +1,7 @@
 class Plant < ApplicationRecord
   belongs_to :order
-#   has_one_attached :avatar
   has_many :plant_notes
+  has_many :cuttings , as: :parent
 
   def recovered?
   date = self.arrival_date

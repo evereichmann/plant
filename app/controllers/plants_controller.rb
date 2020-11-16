@@ -4,6 +4,7 @@ class PlantsController < ApplicationController
   # GET /plants
   # GET /plants.json
   def index
+    @cuttings = Cutting.all
     @plants = Plant.all
   end
 

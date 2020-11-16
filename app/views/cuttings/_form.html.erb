@@ -1,0 +1,62 @@
+<%= form_with(model: cutting, local: true) do |form| %>
+  <% if cutting.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(cutting.errors.count, "error") %> prohibited this cutting from being saved:</h2>
+
+      <ul>
+        <% cutting.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :tag %>
+    <%= form.number_field :tag %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cutting_date %>
+    <%= form.date_select :cutting_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :generation %>
+    <%= form.number_field :generation %>
+  </div>
+
+  <div class="field">
+    <%= form.label :sold %>
+    <%= form.check_box :sold %>
+  </div>
+
+  <div class="field">
+    <%= form.label :price %>
+    <%= form.text_field :price %>
+  </div>
+
+  <div class="field">
+    <%= form.label :parent_id %>
+    <%= form.number_field :parent_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :parent_type %>
+    <%= form.text_field :parent_type %>
+  </div>
+
+  <div class="field">
+    <%= form.label :mother %>
+    <%= form.check_box :mother %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
