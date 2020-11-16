@@ -25,6 +25,7 @@
 <p>total number of plants: <%= @plants.length + @cuttings.length %> </p>
 <p>number of cuttings: <%= @cuttings.length %> </p>
 <p>dead plants: <%= @plants.select{|plant| plant.condition == 'dead'}.length + @cuttings.select{|cutting| cutting.condition == 'dead'}.length%></p>
+<p>dead cuttings: <%= @cuttings.select{|cutting| cutting.condition == 'dead'}.length%></p>
 <p>total live plants: <%= @plants.select{|plant| plant.condition != 'dead'}.length + @cuttings.select{|cutting| cutting.condition != 'dead'}.length %></p>
 <p>plants sold: <%= @plants.select{|plant| plant.sold == true }.length + @cuttings.select{|cutting| cutting.sold == true }.length %></p>
 </div>

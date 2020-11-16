@@ -74,9 +74,7 @@
       <% if @plant.cuttings != nil %> 
       <ul>
         <% @plant.cuttings.each do |cutting| %> 
-          <li><%= cutting.id %></li>
-          <li><%= cutting.name %></li>
-          <li><%= cutting.generation %></li>
+          <li><%= link_to "Tag: #{cutting.tag} | Name: #{cutting.name} | Gen: #{cutting.generation}", cutting_path(cutting)  %></li>
         <% end %>   
       </ul>  
       <% end %> 

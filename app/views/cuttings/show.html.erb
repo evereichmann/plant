@@ -1,5 +1,8 @@
-
- <strong><%= link_to 'New Cutting', new_cutting_path({:name => @cutting.name , :generation => @cutting.generation + 1 , :parent_id => @cutting.id , :parent_type => "Cutting" }) %></strong>
+<div class="ui container">
+  <br/>
+  <div class="ui segment">
+  <div class="ui grid">
+    <div class="eight wide column">
 <p>
   <strong>Name:</strong>
   <%= @cutting.name %>
@@ -44,19 +47,56 @@
   <strong>Mother:</strong>
   <%= @cutting.mother %>
 </p>
+</div>
 
+ <div class="eight wide column">
 <% if @cutting.offspring != nil %>
 <ul>
   <% @cutting.offspring.each do |cutting| %>
-  <p><%= cutting.cutting_date - Date.today %></p>
+  <%# <p><%= cutting.cutting_date - Date.today %></p> %>
     <li><%= link_to "Tag: #{cutting.tag} | Name: #{cutting.name} | Gen: #{cutting.generation}", cutting_path(cutting)  %></li>
   <% end %>
 </ul>  
 <% end %>
+</div>
+<br/>
+  <div class="ui breadcrumb">
+      <strong><%= link_to 'Edit', edit_cutting_path(@cutting , {:name => @cutting.name , :generation => @cutting.generation , :parent_id => @cutting.parent_id , :parent_type => @cutting.parent_type }) %></strong>
+  <div class="divider"> / </div>
+      <% if @cutting.mother == false %>
+      <%= link_to 'Back', cuttings_path %>
+      <% else %>
+      <%= link_to 'Back', plants_path %>
+      <% end %>
+  <div class="divider"> / </div>
+      <strong><%= link_to 'New Note', new_cutting_note_path({:cutting_id => @cutting.id}) %></strong>
+  <div class="divider"> / </div>
+      <strong><%= link_to 'New Cutting', new_cutting_path({:name => @cutting.name , :generation => @cutting.generation + 1 , :parent_id => @cutting.id , :parent_type => "Cutting" }) %></strong>
+  </div>
+</div>
+<br/>
+<%# ends segment box %>
+</div>
 
-<%= link_to 'Edit', edit_cutting_path(@cutting , {:name => @cutting.name , :generation => @cutting.generation , :parent_id => @cutting.parent_id , :parent_type => @cutting.parent_type }) %> |
-<% if @cutting.mother == false %>
-<%= link_to 'Back', cuttings_path %>
-<% else %>
-<%= link_to 'Back', plants_path %>
+<div class="ui three cards">
+<% @cutting.cutting_notes.each do |note|%>
+<div class="ui fluid card">
+<div class="content">
+<p class="header"><%= note.title %></p>
+<%# <% if note.cutting_image.attached? %>
+   <%# <%= image_tag note.cutting_image, class: "image" %> 
+<%# <% end %> 
+<p class="meta">Date: <%= note.note_date.month %>/<%= note.note_date.day %>/<%= note.note_date.year %></p>
+<p class="description">Note: <%= note.text_field %></p>
+  <div class="ui breadcrumb">
+      <%= link_to 'Edit', edit_cutting_note_path(note, {:cutting_id => note.cutting_id}), class:"section"%>
+      <div class="divider"> / </div>
+      <%= link_to 'X', cutting_note_path(note), class:"section", method: :delete, data: { confirm: 'Are you sure?' } %>
+  </div>
+</div>
+</div>
 <% end %>
+</div>
+
+<%# ends container %>
+</div>

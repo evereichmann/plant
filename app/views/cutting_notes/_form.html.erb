@@ -1,10 +1,10 @@
-<%= form_with(model: plant_note, local: true) do |form| %>
-  <% if plant_note.errors.any? %>
+<%= form_with(model: cutting_note, local: true) do |form| %>
+  <% if cutting_note.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(plant_note.errors.count, "error") %> prohibited this plant_note from being saved:</h2>
+      <h2><%= pluralize(cutting_note.errors.count, "error") %> prohibited this cutting_note from being saved:</h2>
 
       <ul>
-        <% plant_note.errors.full_messages.each do |message| %>
+        <% cutting_note.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
       </ul>
@@ -27,7 +27,7 @@
   </div>
 
   <div class="field">
-    <%= form.text_field :plant_id, value: params[:plant_id] , type: "hidden"%>
+    <%= form.text_field :cutting_id, value: params[:cutting_id] , type: "hidden" %>
   </div>
 
   <div class="actions">
