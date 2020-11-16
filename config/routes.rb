@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :cuttings
   resources :plant_notes
   resources :order_notes
   resources :plants

@@ -1,0 +1,60 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @cutting.name %>
+</p>
+
+<p>
+  <strong>Tag:</strong>
+  <%= @cutting.tag %>
+</p>
+
+<p>
+  <strong>Cutting date:</strong>
+  <%= @cutting.cutting_date %>
+</p>
+
+<p>
+  <strong>Generation:</strong>
+  <%= @cutting.generation %>
+</p>
+
+<p>
+  <strong>Sold:</strong>
+  <%= @cutting.sold %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @cutting.price %>
+</p>
+
+<p>
+  <strong>Parent:</strong>
+  <%= @cutting.parent_id %>
+</p>
+
+<p>
+  <strong>Parent type:</strong>
+  <%= @cutting.parent_type %>
+</p>
+
+<p>
+  <strong>Mother:</strong>
+  <%= @cutting.mother %>
+</p>
+
+
+<% if @cutting.offspring != nil %>
+<ul>
+  <% @cutting.offspring.each do |cutting| %>
+    <li><%= cutting.id %></li>
+    <li><%= cutting.name %></li>
+    <li><%= cutting.generation %></li>
+  <% end %>
+</ul>  
+<% end %>
+
+<%= link_to 'Edit', edit_cutting_path(@cutting) %> |
+<%= link_to 'Back', cuttings_path %>

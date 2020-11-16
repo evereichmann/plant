@@ -71,9 +71,15 @@
   </div>
 
   <div class="eight wide column">
-      <%# <% if @plant.avatar.attached? %> 
-        <%# <%= image_tag @plant.avatar %> 
-      <%# <% end %> 
+      <% if @plant.cuttings != nil %> 
+      <ul>
+        <% @plant.cuttings.each do |cutting| %> 
+          <li><%= cutting.id %></li>
+          <li><%= cutting.name %></li>
+          <li><%= cutting.generation %></li>
+        <% end %>   
+      </ul>  
+      <% end %> 
   </div>
 
 <br/>

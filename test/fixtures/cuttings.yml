@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  tag: 1
+  cutting_date: 2020-11-16
+  generation: 1
+  sold: false
+  price: 9.99
+  parent_id: 1
+  parent_type: MyString
+  mother: false
+
+two:
+  name: MyString
+  tag: 1
+  cutting_date: 2020-11-16
+  generation: 1
+  sold: false
+  price: 9.99
+  parent_id: 1
+  parent_type: MyString
+  mother: false
