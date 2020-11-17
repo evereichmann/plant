@@ -68,13 +68,22 @@
       </p>
       <% else %>
       <% end %>
+
+
+      <p>
+        <% start_time = @plant.cuttings.last.cutting_date %>
+        <% end_time = Date.today %>
+        <strong>Last Cut:</strong>
+        <%= distance_of_time_in_words(start_time, end_time) %>
+      </p>
+
   </div>
 
   <div class="eight wide column">
       <% if @plant.cuttings != nil %> 
       <ul>
         <% @plant.cuttings.each do |cutting| %> 
-          <li><%= link_to "Tag: #{cutting.tag} | Name: #{cutting.name} | Gen: #{cutting.generation}", cutting_path(cutting)  %></li>
+          <li><%= link_to "Tag: #{cutting.tag} | Name: #{cutting.name} ", cutting_path(cutting) %></li>
         <% end %>   
       </ul>  
       <% end %> 
@@ -102,9 +111,6 @@
 <div class="ui fluid card">
 <div class="content">
 <p class="header"><%= note.title %></p>
-<%# <% if note.plant_image.attached? %>
-   <%# <%= image_tag note.plant_image, class: "image" %> 
-<%# <% end %> 
 <p class="meta">Date: <%= note.note_date.month %>/<%= note.note_date.day %>/<%= note.note_date.year %></p>
 <p class="description">Note: <%= note.text_field %></p>
   <div class="ui breadcrumb">
