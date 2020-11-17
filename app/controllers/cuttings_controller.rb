@@ -4,8 +4,17 @@ class CuttingsController < ApplicationController
   # GET /cuttings
   # GET /cuttings.json
   def index
-    @cuttings = Cutting.all
-  end
+    if params[:search] == ""
+      @cuttings = Cutting.all
+    elsif params[:search]
+      search_term = params[:search]
+      @cuttings = Cutting.all.select{|cutting|
+        cutting.tag == search_term.to_i
+      }
+    else   
+      @cuttings = Cutting.all
+    end
+  end  
 
   # GET /cuttings/1
   # GET /cuttings/1.json

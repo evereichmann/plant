@@ -4,8 +4,21 @@ class PlantsController < ApplicationController
   # GET /plants
   # GET /plants.json
   def index
-    @cuttings = Cutting.all
+    if params[:search] == ""
+      @plants = Plant.all
+      @cuttings = Cutting.all
+    elsif params[:search] 
+      search_term = params[:search]
+      @plants = Plant.all.select{|plant|
+        plant.tag == search_term.to_i
+      }
+      @cuttings = Cutting.all.select{|cutting|
+        cutting.tag == search_term.to_i
+      }
+  else 
     @plants = Plant.all
+    @cuttings = Cutting.all
+  end 
   end
 
   # GET /plants/1

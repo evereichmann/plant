@@ -21,8 +21,26 @@
 
 
 <div class="ui bottom attached segment">
+<div class="ui secondary  menu">
+<div class="left menu">
+<div class="item">
 <%= link_to '<button type="button" class="ui button">New Plant</button>'.html_safe, new_plant_path %>
-<br/>
+</div>
+</div>
+<div class="right menu">
+  <div class="item">
+      <div class="ui icon input">
+<div class="search">
+    <%= form_tag(plants_path, method: :get ) %>
+       <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag 'Search', name: nil %>
+</div> 
+      </div>
+    </div>
+</div>
+</div>
+
+
 <table class="ui celled unstackable table">
   <thead>
     <tr>
