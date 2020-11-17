@@ -18,7 +18,7 @@
 
   <div class="field">
     <%= form.label "seller name" %>
-    <%= form.collection_select :order_id , @order , :id, :filled? %>
+    <%= form.collection_select :order_id , @orders.reject{|order| order.filled? == "Filled"} , :id, :filled? %>
   </div>
 
   <div class="field">

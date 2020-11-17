@@ -15,7 +15,7 @@ class PlantsController < ApplicationController
 
   # GET /plants/new
   def new
-    @order = Order.all
+    @orders = Order.all
     @plant = Plant.new
   end
 

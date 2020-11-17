@@ -13,7 +13,7 @@ class Order < ApplicationRecord
     def filled?
         if self.units == self.plants.length
             "Filled"
-            else
+        else
             self.name_and_date
         end    
     end 
