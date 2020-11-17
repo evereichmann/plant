@@ -48,21 +48,26 @@
   <%= @cutting.mother %>
 </p>
 
-
+<% if @cutting.offspring[0] == nil %>
+<p>
+   <strong>Last Cut:</strong>
+   Never
+</p>
+<% else %>
 <p>
    <% start_time = @cutting.offspring.last.cutting_date %>
    <% end_time = Date.today %>
    <strong>Last Cut:</strong>
    <%= distance_of_time_in_words(start_time, end_time) %>
 </p>
-
+<% end %>
 </div>
 
  <div class="eight wide column">
 <% if @cutting.offspring != nil %>
 <ul>
   <% @cutting.offspring.each do |cutting| %>
-    <li><%= link_to "Tag: #{cutting.tag} | Name: #{cutting.name} | Gen: #{cutting.generation}", cutting_path(cutting)  %></li>
+    <li><%= link_to "Tag: #{cutting.tag} | Name: #{cutting.name}", cutting_path(cutting)  %></li>
   <% end %>
 </ul>  
 <% end %>
@@ -72,9 +77,15 @@
       <strong><%= link_to 'Edit', edit_cutting_path(@cutting , {:name => @cutting.name , :generation => @cutting.generation , :parent_id => @cutting.parent_id , :parent_type => @cutting.parent_type }) %></strong>
   <div class="divider"> / </div>
       <% if @cutting.mother == false %>
-      <%= link_to 'Back', cuttings_path %>
+      <strong><%= link_to 'Back', cuttings_path %></strong>
       <% else %>
-      <%= link_to 'Back', plants_path %>
+      <strong><%= link_to 'Back', plants_path %></strong>
+      <% end %>
+  <div class="divider"> / </div>
+    <% if @cutting.parent_type == "Cutting" %>
+      <strong><%= link_to 'Mother Plant', cutting_path(@cutting.parent_id)%></strong> 
+      <% else %>
+      <strong><%= link_to 'Mother Plant', plant_path(@cutting.parent_id)%></strong> 
       <% end %>
   <div class="divider"> / </div>
       <strong><%= link_to 'New Note', new_cutting_note_path({:cutting_id => @cutting.id}) %></strong>

@@ -69,14 +69,19 @@
       <% else %>
       <% end %>
 
-
+    <% if @plant.cuttings[0] == nil %>
+      <p>
+        <strong>Last Cut:</strong>
+        Never
+      </p>
+    <% else %>
       <p>
         <% start_time = @plant.cuttings.last.cutting_date %>
         <% end_time = Date.today %>
         <strong>Last Cut:</strong>
         <%= distance_of_time_in_words(start_time, end_time) %>
       </p>
-
+    <% end %>
   </div>
 
   <div class="eight wide column">
