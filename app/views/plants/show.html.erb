@@ -79,7 +79,7 @@
         <% start_time = @plant.cuttings.last.cutting_date %>
         <% end_time = Date.today %>
         <strong>Last Cut:</strong>
-        <%= distance_of_time_in_words(end_time, start_time + 7.days ) %>
+        <%= days_between = (end_time - start_time ).to_i %> days
       </p>
     <% end %>
   </div>
