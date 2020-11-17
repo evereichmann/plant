@@ -47,13 +47,21 @@
   <strong>Mother:</strong>
   <%= @cutting.mother %>
 </p>
+
+
+<p>
+   <% start_time = @cutting.offspring.last.cutting_date %>
+   <% end_time = Date.today %>
+   <strong>Last Cut:</strong>
+   <%= distance_of_time_in_words(start_time, end_time) %>
+</p>
+
 </div>
 
  <div class="eight wide column">
 <% if @cutting.offspring != nil %>
 <ul>
   <% @cutting.offspring.each do |cutting| %>
-  <%# <p><%= cutting.cutting_date - Date.today %></p> %>
     <li><%= link_to "Tag: #{cutting.tag} | Name: #{cutting.name} | Gen: #{cutting.generation}", cutting_path(cutting)  %></li>
   <% end %>
 </ul>  
