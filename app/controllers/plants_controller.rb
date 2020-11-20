@@ -8,12 +8,14 @@ class PlantsController < ApplicationController
       @plants = Plant.all
       @cuttings = Cutting.all
     elsif params[:search] 
-      search_term = params[:search]
+      search_term = params[:search].downcase
       @plants = Plant.all.select{|plant|
-        plant.tag == search_term.to_i
+        plant.tag == search_term.to_i ||
+        plant.name.downcase.include?(search_term)
       }
       @cuttings = Cutting.all.select{|cutting|
-        cutting.tag == search_term.to_i
+        cutting.tag == search_term.to_i ||
+        cutting.name.downcase.include?(search_term)
       }
   else 
     @plants = Plant.all
