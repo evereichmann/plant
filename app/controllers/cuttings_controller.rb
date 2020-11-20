@@ -7,9 +7,10 @@ class CuttingsController < ApplicationController
     if params[:search] == ""
       @cuttings = Cutting.all
     elsif params[:search]
-      search_term = params[:search]
+      search_term = params[:search].downcase
       @cuttings = Cutting.all.select{|cutting|
-        cutting.tag == search_term.to_i
+        cutting.tag == search_term.to_i ||
+        cutting.name.downcase.include?(search_term)
       }
     else   
       @cuttings = Cutting.all
