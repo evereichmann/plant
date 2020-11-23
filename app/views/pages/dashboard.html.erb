@@ -36,12 +36,25 @@
    <%  if item.date_shipped != nil %>
    <% a = Date.parse("#{item.date_order}") %>
    <% b = Date.parse("#{item.date_shipped}") %> 
-   <%c = b.mjd - a.mjd %>
+   <% c = b.mjd - a.mjd %>
    <% avg << c %>
 <% end %> 
 <% end %>  
 <br/> 
 <p>average days from order to ship(Indonesia):<%= avg.sum / avg.length %> days</p>
+
+<% list = @orders.select{|order| order.country_origin == 'Indonesia' && order.multiple == true } %>
+<% avg = []%>
+<% list.map do |item| %>
+   <%  if item.date_shipped != nil %>
+   <% a = Date.parse("#{item.date_order}") %>
+   <% b = Date.parse("#{item.date_shipped}") %> 
+   <% c = b.mjd - a.mjd %>
+   <% avg << c %>
+<% end %> 
+<% end %>  
+<br/> 
+<p>average days from order to ship multiple plants(Indonesia):<%= avg.sum / avg.length %> days</p>
 </div>
 
 
