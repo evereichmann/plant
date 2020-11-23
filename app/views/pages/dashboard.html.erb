@@ -22,16 +22,26 @@
 <div class="ui bottom attached segment">
 
 <div>
-<p>total number of plants: <%= @plants.length + @cuttings.length %> </p>
+<p>total number of plants: <%= @plants.select{|plant| plant.condition != 'dead'}.length + @cuttings.select{|cutting| cutting.condition != 'dead'}.length %> </p>
 <p>number of cuttings: <%= @cuttings.length %> </p>
 <p>dead plants: <%= @plants.select{|plant| plant.condition == 'dead'}.length + @cuttings.select{|cutting| cutting.condition == 'dead'}.length%></p>
 <p>dead cuttings: <%= @cuttings.select{|cutting| cutting.condition == 'dead'}.length%></p>
-<p>total live plants: <%= @plants.select{|plant| plant.condition != 'dead'}.length + @cuttings.select{|cutting| cutting.condition != 'dead'}.length %></p>
 <p>plants sold: <%= @plants.select{|plant| plant.sold == true }.length + @cuttings.select{|cutting| cutting.sold == true }.length %></p>
 </div>
 
 <div>
-
+<% list = @orders.select{|order| order.country_origin == 'Indonesia'} %>
+<% avg = []%>
+<% list.map do |item| %>
+   <%  if item.date_shipped != nil %>
+   <% a = Date.parse("#{item.date_order}") %>
+   <% b = Date.parse("#{item.date_shipped}") %> 
+   <%c = b.mjd - a.mjd %>
+   <% avg << c %>
+<% end %> 
+<% end %>  
+<br/> 
+<p>average days from order to ship(Indonesia):<%= avg.sum / avg.length %> days</p>
 </div>
 
 
