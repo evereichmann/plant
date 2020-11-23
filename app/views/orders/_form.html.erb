@@ -23,17 +23,17 @@
 
   <div class="field">
     <%= form.label :units %>
-    <%= form.number_field :units %>
+    <%= form.number_field :units, include_blank: true %>
   </div>
 
   <div class="field">
     <%= form.label :total_price %>
-    <%= form.number_field :total_price , step: :any %>
+    <%= form.number_field :total_price, step: :any %>
   </div>
 
   <div class="field">
     <%= form.label :date_order %>
-    <%= form.date_select :date_order %>
+    <%= form.date_select :date_order, include_blank: true %>
   </div>
 
   <div class="field">
