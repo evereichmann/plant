@@ -6,7 +6,7 @@ class PlantsController < ApplicationController
   def index
     if params[:search] == ""
       @plants = Plant.order(params[:sort]) 
-      @cuttings = Cutting.all
+      @cuttings = Cutting.order(params[:sort]) 
     elsif params[:search] 
       search_term = params[:search].downcase
       @plants = Plant.all.select{|plant|
@@ -18,8 +18,8 @@ class PlantsController < ApplicationController
         cutting.name.downcase.include?(search_term)
       }
   else 
-    @plants = Plant.order(params[:sort])
-    @cuttings = Cutting.all
+    @plants = Plant.order(params[:sort]) 
+    @cuttings = Cutting.order(params[:sort]) 
   end 
   end
 

@@ -5,7 +5,7 @@ class CuttingsController < ApplicationController
   # GET /cuttings.json
   def index
     if params[:search] == ""
-      @cuttings = Cutting.all
+      @cuttings = Cutting.order(params[:sort])
     elsif params[:search]
       search_term = params[:search].downcase
       @cuttings = Cutting.all.select{|cutting|
@@ -13,7 +13,7 @@ class CuttingsController < ApplicationController
         cutting.name.downcase.include?(search_term)
       }
     else   
-      @cuttings = Cutting.all
+      @cuttings = Cutting.order(params[:sort]) 
     end
   end  
 
