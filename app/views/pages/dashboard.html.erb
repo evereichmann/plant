@@ -22,11 +22,11 @@
 <div class="ui bottom attached segment">
 
 <div>
-<p>total number of plants: <%= @plants.select{|plant| plant.condition != 'dead'}.length + @cuttings.select{|cutting| cutting.condition != 'dead'}.length %> </p>
-<p>number of cuttings: <%= @cuttings.length %> </p>
-<p>dead plants: <%= @plants.select{|plant| plant.condition == 'dead'}.length + @cuttings.select{|cutting| cutting.condition == 'dead'}.length%></p>
-<p>dead cuttings: <%= @cuttings.select{|cutting| cutting.condition == 'dead'}.length%></p>
-<p>plants sold: <%= @plants.select{|plant| plant.sold == true }.length + @cuttings.select{|cutting| cutting.sold == true }.length %></p>
+<strong><p>Total number of plants:</strong> <%= @plants.select{|plant| plant.condition != 'dead'}.length + @cuttings.select{|cutting| cutting.condition != 'dead'}.length %> </p>
+<strong><p>Number of cuttings:</strong> <%= @cuttings.length %> </p>
+<strong><p>Dead plants:</strong> <%= @plants.select{|plant| plant.condition == 'dead'}.length + @cuttings.select{|cutting| cutting.condition == 'dead'}.length%></p>
+<strong><p>Dead cuttings:</strong> <%= @cuttings.select{|cutting| cutting.condition == 'dead'}.length%></p>
+<strong><p>Plants sold:</strong> <%= @plants.select{|plant| plant.sold == true }.length + @cuttings.select{|cutting| cutting.sold == true }.length %></p>
 </div>
 
 <div>
@@ -41,7 +41,7 @@
 <% end %> 
 <% end %>  
 <br/> 
-<p>average days from order to ship(Indonesia): <%= avg.sum / avg.length %> days</p>
+<strong><p>Average days from order to ship(Indonesia):</strong>  <%= avg.sum / avg.length %> days</p>
 
 <% list = @orders.select{|order| order.country_origin == 'Indonesia' && order.multiple == true } %>
 <% avg = []%>
@@ -54,7 +54,7 @@
 <% end %> 
 <% end %>  
 <br/> 
-<p>average days from order to ship multiple plants(Indonesia): <%= avg.sum / avg.length %> days</p>
+<strong><p>Average days from order to ship multiple plants(Indonesia):</strong>  <%= avg.sum / avg.length %> days</p>
 
 <% list = @orders.select{|order| order.country_origin == 'Indonesia' && order.multiple == false } %>
 <% avg = []%>
@@ -67,8 +67,16 @@
 <% end %> 
 <% end %>  
 <br/> 
-<p>average days from order to ship single plants(Indonesia): <%= avg.sum / avg.length %> days</p>
+<strong><p>Average days from order to ship single plants(Indonesia):</strong>  <%= avg.sum / avg.length %> days</p>
+
+<br/> 
+<% list = @orders.select{|order| order.country_origin == 'Indonesia' && order.date_shipped != nil } %>
+<% avg_in_box = [] %>
+<% i = 0 %>
+<% while (i < list.length) %>
+<% avg_in_box << list[i].plants.map{|plant| plant.days_in_box } %>
+<% i += 1 %>
+<% end %>
+<strong><p>Average days in box(Indonesia):</strong>  <%= avg_in_box.inject(:+).inject(:+) / avg_in_box.join(" ").split.length %> days</p>
 </div>
-
-
 </div>
