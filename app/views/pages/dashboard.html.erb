@@ -96,7 +96,7 @@
 <tbody>
 <tr>
 <td><%= plant %></td>
-<td><%= @plants.find_all{|specific_plant| specific_plant.name == plant }.count + @cuttings.find_all{|specific_plant| specific_plant.name == plant }.count %></td>
+<td><%= @plants.find_all{|specific_plant| specific_plant.condition != "dead" && specific_plant.name == plant }.count + @cuttings.find_all{|specific_plant| specific_plant.condition != "dead" && specific_plant.name == plant }.count %></td>
 </tr>
 </tbody>
 <% end %>
