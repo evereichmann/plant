@@ -20,8 +20,9 @@
 </div>
 
 <div class="ui bottom attached segment">
+<div class="ui grid">
 
-<div>
+<div class="eight wide column">
 <strong><p>Total number of plants:</strong> <%= @plants.select{|plant| plant.condition != 'dead'}.length + @cuttings.select{|cutting| cutting.condition != 'dead'}.length %> </p>
 <strong><p>Number of cuttings:</strong> <%= @cuttings.length %> </p>
 <strong><p>Dead plants:</strong> <%= @plants.select{|plant| plant.condition == 'dead'}.length + @cuttings.select{|cutting| cutting.condition == 'dead'}.length%></p>
@@ -29,7 +30,7 @@
 <strong><p>Plants sold:</strong> <%= @plants.select{|plant| plant.sold == true }.length + @cuttings.select{|cutting| cutting.sold == true }.length %></p>
 </div>
 
-<div>
+<div class="eight wide column">
 <% list = @orders.select{|order| order.country_origin == 'Indonesia'} %>
 <% avg = []%>
 <% list.map do |item| %>
@@ -78,5 +79,29 @@
 <% i += 1 %>
 <% end %>
 <strong><p>Average days in box(Indonesia):</strong>  <%= avg_in_box.inject(:+).inject(:+) / avg_in_box.join(" ").split.length %> days</p>
+</div>
+
+<div class="eight wide column">
+<table class="ui celled table">
+<thead>
+<tr><th>Plant Name</th>
+    <th># of Plants</th>
+  </tr>
+</thead>
+<% uniq_plant = [] %>
+<% @plants.each do |plant| %>
+<% uniq_plant << plant.name %>
+<% end %>
+<% uniq_plant.uniq.each do |plant| %>
+<tbody>
+<tr>
+<td><%= plant %></td>
+<td><%= @plants.find_all{|specific_plant| specific_plant.name == plant }.count + @cuttings.find_all{|specific_plant| specific_plant.name == plant }.count %></td>
+</tr>
+</tbody>
+<% end %>
+</table>
+</div>
+
 </div>
 </div>
