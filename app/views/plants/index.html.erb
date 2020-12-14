@@ -151,11 +151,6 @@
           <td id="sold">Not Recorded</td>
         <%end%>
         <td id="sold"><%= plant.condition %></td>
-        <% if plant.arrival_date != nil%>
-          <td id="sold"><%= plant.recovered?  %></td>
-        <%else%>
-          <td id="sold">Not Recorded</td>
-        <%end%>
         <td id="sold">$<%= plant.price %></td>
         <% money = plant.price - plant.unit_price %>
         <td id="sold">$<%= money %></td>
@@ -163,23 +158,6 @@
         <td id="sold"><%= link_to 'Edit', edit_plant_path(plant) %></td>
       </tr>
       <% end %>
-    <% end %>
-  </tbody>
-  <tbody>
-    <% @cuttings.each do |cutting| %>
-    <% if cutting.mother == true  && cutting.sold == true %>
-      <tr>
-        <td id="sold"><%= cutting.tag %></td>
-        <td id="sold"><%= cutting.name %></td>
-        <td id="sold"></td>
-        <td id="sold"><%= cutting.cutting_date %></td>
-        <td id="sold"></td>
-        <td id="sold">$<%= cutting.price %></td>
-        <td id="sold">$<%= cutting.price %></td>
-        <td id="sold"><%= link_to 'Show', cutting %></td>
-        <td id="sold"><%= link_to 'Edit', edit_cutting_path(cutting) %></td>
-      </tr>
-    <% end %>
     <% end %>
   </tbody>
 </table>

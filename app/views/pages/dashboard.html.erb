@@ -83,6 +83,7 @@
 
 <div class="eight wide column">
 <table class="ui celled table">
+<%# table of plants by name %>
 <thead>
 <tr><th>Plant Name</th>
     <th># of Plants</th>
@@ -90,17 +91,23 @@
     <th>Total</th>
   </tr>
 </thead>
+<%# iterate through all plants and find all unique names and put in array %>
 <% uniq_plant = [] %>
 <% @plants.each do |plant| %>
 <% uniq_plant << plant.name %>
 <% end %>
+<%# iterate through unique plant names and place in table %>
 <% uniq_plant.uniq.each do |plant| %>
 <tbody>
 <tr>
+<%# plant name %>
 <td><%= plant %></td>
-<td><%= @plants.find_all{|specific_plant| specific_plant.condition != "dead" && specific_plant.name == plant }.count %></td>
-<td><%=  @cuttings.find_all{|specific_plant| specific_plant.condition != "dead" && specific_plant.name == plant }.count %></td>
-<td><%= @plants.find_all{|specific_plant| specific_plant.condition != "dead" && specific_plant.name == plant }.count + @cuttings.find_all{|specific_plant| specific_plant.condition != "dead" && specific_plant.name == plant }.count %></td>
+<%# get count of number of plants we have that match name %>
+<td><%= p = @plants.find_all{|specific_plant| specific_plant.condition != "dead" && specific_plant.sold != true && specific_plant.name == plant }.count %></td>
+<%# get count of number of cuttings match name  %>
+<td><%=  c = @cuttings.find_all{|specific_plant| specific_plant.condition != "dead" && specific_plant.sold != true && specific_plant.name == plant }.count %></td>
+<%# total number of plants and cutting %>
+<td><%= p + c %></td>
 </tr>
 </tbody>
 <% end %>
