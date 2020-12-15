@@ -136,7 +136,7 @@
 </thead>
 <% cutting_number = []%>
 <% @cuttings.each do |cutting| %>
-<% if cutting.created_at.between?(cutting.created_at.month, 1.month) == true %>
+<% if cutting.cutting_date.between?(cutting.cutting_date, 1.month) == true && cutting.condition != 'dead' %>
    <% cutting_number << cutting %>
    <% start_time = cutting.cutting_date %>
    <% end_time = Date.today %>
