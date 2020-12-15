@@ -110,9 +110,9 @@
 <tr>
 <%# plant name %>
 <td><%= plant %></td>
-<%# get count of number of plants we have that match name %>
+<%# get count of number of plants we have that match name and are alive and not sold %>
 <td><%= p = @plants.find_all{|specific_plant| specific_plant.condition != "dead" && specific_plant.sold != true && specific_plant.name == plant }.count %></td>
-<%# get count of number of cuttings match name  %>
+<%# get count of number of cuttings match name and are alive and not sold %>
 <td><%=  c = @cuttings.find_all{|specific_plant| specific_plant.condition != "dead" && specific_plant.sold != true && specific_plant.name == plant }.count %></td>
 <%# total number of plants and cutting %>
 <td><%= p + c %></td>
