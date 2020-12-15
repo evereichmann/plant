@@ -91,6 +91,7 @@
 
 <div class="eight wide column">
 <table class="ui celled table">
+<h3>Inventory List</h3>
 <%# table of plants by name %>
 <thead>
 <tr><th>Plant Name</th>
@@ -120,6 +121,35 @@
 </tbody>
 <% end %>
 </table>
+</div>
+
+<div class="eight wide column">
+<table class="ui celled table">
+<h3>Month of Cuttings</h3>
+<%# table of when cutting have been taken within the last month %>
+<thead>
+  <tr>
+    <th>Tag Number</th>
+    <th>Plant Name</th>
+    <th>Last Day Cut</th>
+  </tr>
+</thead>
+<% cutting_number = []%>
+<% @cuttings.each do |cutting| %>
+<% if cutting.created_at.between?(cutting.created_at.month, 1.month) == true %>
+   <% cutting_number << cutting %>
+   <% start_time = cutting.cutting_date %>
+   <% end_time = Date.today %>
+   <% days_between = (end_time - start_time ).to_i %> 
+<tbody>
+<tr>
+ <td><%= cutting.parent.tag %></td> 
+ <td><%= cutting.name %></td>
+ <td><%= days_between %> days</td>
+</tr>
+<%end%>
+<%end%>
+<p><strong>Total:</strong> <%= cutting_number.length %></p>
 </div>
 
 </div>

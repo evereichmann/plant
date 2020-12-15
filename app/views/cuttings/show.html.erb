@@ -23,15 +23,12 @@
   <%= @cutting.generation %>
 </p>
 
-<p>
-  <strong>Sold:</strong>
-  <%= @cutting.sold %>
-</p>
-
+<% if @cutting.sold == true %>
 <p>
   <strong>Price:</strong>
   <%= @cutting.price %>
 </p>
+<% end %>
 
 <p>
   <strong>Parent:</strong>
