@@ -136,6 +136,7 @@
 </thead>
 <% cutting_number = []%>
 <% @cuttings.each do |cutting| %>
+<%#  determine alive cuttings within 30 days %>
 <% if cutting.cutting_date > Date.today - 30.day && cutting.condition != 'dead' %>
    <% cutting_number << cutting %>
    <% start_time = cutting.cutting_date %>
@@ -149,6 +150,7 @@
 </tr>
 <%end%>
 <%end%>
+<%# total number of cutting this month %>
 <p><strong>Total:</strong> <%= cutting_number.length %></p>
 </div>
 

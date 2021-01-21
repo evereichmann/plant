@@ -39,8 +39,13 @@ class CuttingsController < ApplicationController
 
     respond_to do |format|
       if @cutting.save
-        format.html { redirect_to @cutting, notice: 'Cutting was successfully created.' }
-        format.json { render :show, status: :created, location: @cutting }
+        if @cutting.parent_type == "Plant"
+          format.html { redirect_to plant_path(@cutting.parent_id) , notice: 'Cutting was successfully created.' }
+          format.json { render :show, status: :created, location: @cutting }
+        elsif @cutting.parent_type == "Cutting"
+          format.html { redirect_to cutting_path(@cutting.parent_id) , notice: 'Cutting was successfully created.' }
+          format.json { render :show, status: :created, location: @cutting }
+        end
       else
         format.html { render :new }
         format.json { render json: @cutting.errors, status: :unprocessable_entity }

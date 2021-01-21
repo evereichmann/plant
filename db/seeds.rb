@@ -8,6 +8,7 @@
 
 Order.destroy_all
 Plant.destroy_all
+Cutting.destroy_all
 
 Order.create(id: 1, seller_name: "Chipo Nursery", country_origin: "Indonesia", units: "20",total_price: "264.60", date_order: "2020-09-22" , date_shipped: "2020-10-07", multiple: false)
 Order.create(id: 2, seller_name: "Chipo Nursery", country_origin: "Indonesia", units: "8",total_price: "512.66", date_order: "2020-10-01", date_shipped: "2020-10-12", multiple: false)
