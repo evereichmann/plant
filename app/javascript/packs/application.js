@@ -15,3 +15,16 @@ require("channels")
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
+
+
+document.addEventListener("DOMContentLoaded", function(){
+    const secretWord = document.getElementById('auth')
+    secretWord.addEventListener('input', function(e){
+        if(e.target.value === "newmemberplanthaus"){
+            // const submitArea = 
+            document.getElementById("new-user-actions").innerHTML = '<button type="submit">Submit</button>'
+        }else{
+        }
+    })
+})
+
