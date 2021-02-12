@@ -16,12 +16,10 @@ require("channels")
 // const imagePath = (name) => images(name, true)
 
 
-
+//hides the submit button on new user page
 document.addEventListener("DOMContentLoaded", function(){
-    const secretWord = document.getElementById('auth')
-    secretWord.addEventListener('input', function(e){
+    document.getElementById('auth').addEventListener('input', function(e){
         if(e.target.value === "newmemberplanthaus"){
-            // const submitArea = 
             document.getElementById("new-user-actions").innerHTML = '<button type="submit">Submit</button>'
         }else{
         }
