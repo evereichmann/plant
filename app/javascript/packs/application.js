@@ -16,13 +16,16 @@ require("channels")
 // const imagePath = (name) => images(name, true)
 
 
-//hides the submit button on new user page
+//allow for javascript event listner in Rails application
 document.addEventListener("DOMContentLoaded", function(){
+
+    //hides/adds the submit button on new user page
     document.getElementById('auth').addEventListener('input', function(e){
         if(e.target.value === "newmemberplanthaus"){
             document.getElementById("new-user-actions").innerHTML = '<button type="submit">Submit</button>'
         }else{
         }
     })
+
 })
 
