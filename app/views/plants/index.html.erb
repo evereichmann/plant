@@ -88,7 +88,7 @@
 
 <br>
 
-<h1>Cuttings</h1>
+<h1>Mother Cuttings</h1>
 <table class="ui celled unstackable table">
   <thead>
     <tr>
@@ -158,6 +158,42 @@
         <td id="sold"><%= link_to 'Edit', edit_plant_path(plant) %></td>
       </tr>
       <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<h1>Sold Mother Cuttings</h1>
+<table class="ui celled unstackable table">
+  <thead>
+    <tr>
+      <th><%= link_to "Tag Number", :sort => "tag" %></th>
+      <th><%= link_to "Name", :sort => "name" %></th>
+      <th>Cutting date</th>
+      <th><%= link_to "Condition", :sort => "condition" %></th>
+      <th>Generation</th>
+      <th>Parent Tag</th>
+      <th>Sold</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @cuttings.each do |cutting| %>
+    <% if cutting.mother != false && cutting.condition != "dead" && cutting.sold != false %>
+      <tr>
+        <td id="cutting"><%= cutting.tag %></td>
+        <td id="cutting"><%= cutting.name %></td>
+
+        <td id="cutting"><%= cutting.cutting_date.month %>/<%= cutting.cutting_date.day %>/<%= cutting.cutting_date.year %></td>
+        <td id="cutting"><%= cutting.condition %></td>
+        <td id="cutting"><%= cutting.generation %></td>
+        <td id="cutting"><%= cutting.parent.tag %></td>
+        <td id="cutting"><%= cutting.price %></td>
+        <td id="cutting"><%= link_to 'Show', cutting %></td>
+        <td id="cutting"><%= link_to 'Edit', edit_cutting_path(cutting, {:name => cutting.name , :generation => cutting.generation , :parent_id => cutting.parent_id , :parent_type => cutting.parent_type }) %></td>
+      </tr>
+    <% end %>
     <% end %>
   </tbody>
 </table>
