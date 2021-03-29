@@ -29,6 +29,9 @@
 <div class="item">
 <%= link_to '<button type="button" class="ui button">New Plant</button>'.html_safe, new_plant_path %>
 </div>
+<div class="item">
+<%= link_to '<button type="button" class="ui button">New Container</button>'.html_safe, new_container_path %>
+</div>
 </div>
 <div class="right menu">
   <div class="item">
@@ -44,6 +47,34 @@
 </div>
 
 
+  <h1>Containers</h1>
+  <table class="ui celled unstackable table">
+  <thead>
+   <tr>
+      <th>Pot Number</th>
+      <th>Name</th>
+      <th>Plant Count</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @containers.each do |container|%>
+  <% if container.pot_number != 0 %>
+  <tr>
+  <td><%= container.pot_number%></td>
+  <td><%= container.plant_name%></td>
+  <td><%= container.number_of_plants %></td>
+      <td><%= link_to 'Show', container %></td>
+      <td><%= link_to 'Edit', edit_container_path(container) %></td>
+      <td><%= link_to 'Destroy', container, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+  <%else%>
+  <%end%>
+  <%end%>
+  </tbody>
+  </table>
+
+  <h1>Plants</h1>
 <table class="ui celled unstackable table">
   <thead>
     <tr>
@@ -59,7 +90,7 @@
 
   <tbody>
     <% @plants.each do |plant| %>
-      <% if plant.condition != "dead" && plant.sold != true %>
+      <% if plant.container_id == nil && plant.condition != "dead" && plant.sold != true %>
       <tr>
         <% if plant.tag != nil %>
         <td id="plant"><%= plant.tag %></td>
@@ -80,7 +111,7 @@
           <td id="plant">Not Recorded</td>
         <%end%>
         <td id="plant"><%= link_to 'Show', plant %></td>
-        <td id="plant"><%= link_to 'Edit', edit_plant_path(plant) %></td>
+        <td id="plant"><%= link_to 'Edit', edit_plant_path(plant, {:name => plant.name}) %></td>
         <td id="plant"><%= link_to 'Destroy', plant, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
        <% else %>

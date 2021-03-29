@@ -10,6 +10,8 @@ class ContainersController < ApplicationController
   # GET /containers/1
   # GET /containers/1.json
   def show
+    @plants = Plant.all
+    @cuttings = Cutting.all
   end
 
   # GET /containers/new

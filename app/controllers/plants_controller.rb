@@ -7,6 +7,7 @@ class PlantsController < ApplicationController
     if params[:search] == ""
       @plants = Plant.order(params[:sort]) 
       @cuttings = Cutting.order(params[:sort]) 
+      @containers = Container.order(params[:sort]) 
     elsif params[:search] 
       search_term = params[:search].downcase
       @plants = Plant.all.select{|plant|
@@ -17,9 +18,14 @@ class PlantsController < ApplicationController
         cutting.tag == search_term.to_i ||
         cutting.name.downcase.include?(search_term)
       }
+      @containers = Container.all.select{|container|
+        container.pot_number == search_term.to_i ||
+        container.plant_name.downcase.include?(search_term)
+      }
   else 
     @plants = Plant.order(params[:sort]) 
     @cuttings = Cutting.order(params[:sort]) 
+    @containers = Container.all
   end 
   end
 
@@ -36,6 +42,7 @@ class PlantsController < ApplicationController
 
   # GET /plants/1/edit
   def edit
+    @container = Container.all
   end
 
   # POST /plants
@@ -86,7 +93,6 @@ class PlantsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def plant_params
-      params.require(:plant).permit(:tag , :order_id, :name, :unit_price, :arrival_date, :condition, :recovery_date, :sold, :price)
-      # , cuttings_attributes: [:id, :name, :tag, :cutting_date, :generation, :sold, :price, :parent_id, :parent_type, :mother, :condition]
+      params.require(:plant).permit(:tag , :order_id, :name, :unit_price, :arrival_date, :condition, :recovery_date, :sold, :price, :container_id)
     end
 end
