@@ -25,6 +25,7 @@ class CuttingsController < ApplicationController
   # GET /cuttings/new
   def new
     @plant = Plant.all
+    @container = Container.all
     @cutting = Cutting.new
   end
 
@@ -41,6 +42,9 @@ class CuttingsController < ApplicationController
       if @cutting.save
         if @cutting.parent_type == "Plant"
           format.html { redirect_to plant_path(@cutting.parent_id) , notice: 'Cutting was successfully created.' }
+          format.json { render :show, status: :created, location: @cutting }
+        elsif @cutting.parent_type == "Container"  
+          format.html { redirect_to container_path(@cutting.parent_id) , notice: 'Cutting was successfully created.' }
           format.json { render :show, status: :created, location: @cutting }
         elsif @cutting.parent_type == "Cutting"
           format.html { redirect_to cutting_path(@cutting.parent_id) , notice: 'Cutting was successfully created.' }

@@ -1,0 +1,32 @@
+<%= form_with(model: container, local: true) do |form| %>
+  <% if container.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(container.errors.count, "error") %> prohibited this container from being saved:</h2>
+
+      <ul>
+        <% container.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :pot_number %>
+    <%= form.number_field :pot_number %>
+  </div>
+
+  <div class="field">
+    <%= form.label :plant_name %>
+    <%= form.collection_select :plant_name , @plants.select(:name).distinct, :name, :name %>
+    <%# <button id="plant-name-pot">Generate All Plants</button> %>
+  </div>
+
+  <div id="generated-plants">
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+<br/>
