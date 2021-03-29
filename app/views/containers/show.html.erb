@@ -1,0 +1,56 @@
+<p id="notice"><%= notice %></p>
+<div class="ui container">
+  <br/>
+  <div class="ui segment">
+  <div class="ui grid">
+    <div class="eight wide column">
+<p>
+  <strong>Plant name:</strong>
+  <%= @container.plant_name %>
+</p>
+
+<p>
+  <strong>Pot number:</strong>
+  <%= @container.pot_number %>
+</p>
+
+<% if @container.cuttings[0] == nil %>
+      <p>
+        <strong>Last Cut:</strong>
+        Never
+      </p>
+    <% else %>
+      <p>
+        <% start_time = @container.cuttings.last.cutting_date %>
+        <% end_time = Date.today %>
+        <strong>Last Cut:</strong>
+        <%= days_between = (end_time - start_time ).to_i %> days
+      </p>
+  <% end %>
+  </div>
+
+  <div class="eight wide column">
+ <% if @container.cuttings != nil %> 
+      <ul>
+        <% @container.cuttings.each do |cutting| %> 
+          <li><%= link_to "Tag: #{cutting.tag} | Name: #{cutting.name} ", cutting_path(cutting) %></li>
+        <% end %>   
+      </ul>  
+<% end %> 
+</div>
+<br/>
+  <div class="ui breadcrumb">
+  <strong><%= link_to 'Edit', edit_container_path(@container), class:"section" %></strong>
+  <div class="divider"> / </div>
+  <strong><%= link_to 'Back', containers_path, class:"section" %></strong>
+  <div class="divider"> / </div>
+  <strong><%= link_to 'New Cutting', new_cutting_path({:name => @container.plant_name , :generation => "1" , :parent_id => @container.id , :parent_type => "Container" }) %></strong>
+  <br/>
+  </div>
+  </div>
+  <br/>
+  </div>
+  
+  <div class="ui segment">
+  <h3>plantz</h3>
+  </div>

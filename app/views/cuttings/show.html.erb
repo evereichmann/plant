@@ -31,8 +31,13 @@
 <% end %>
 
 <p>
+<% if @cutting.parent_type == "Container" %>
+  <strong>Container:</strong>
+  <%= @cutting.parent.pot_number%>
+<%else%>
   <strong>Parent:</strong>
   <%= @cutting.parent.tag %>
+<%end%>  
 </p>
 
 <p>
@@ -81,6 +86,8 @@
   <div class="divider"> / </div>
     <% if @cutting.parent_type == "Cutting" %>
       <strong><%= link_to 'Mother Plant', cutting_path(@cutting.parent_id)%></strong> 
+      <% elsif @cutting.parent_type == "Container" %>
+      <strong><%= link_to 'Mother Plant', container_path(@cutting.parent_id)%></strong> 
       <% else %>
       <strong><%= link_to 'Mother Plant', plant_path(@cutting.parent_id)%></strong> 
       <% end %>
