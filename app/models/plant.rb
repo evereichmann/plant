@@ -2,7 +2,6 @@ class Plant < ApplicationRecord
   belongs_to :order
   has_many :plant_notes
   has_many :cuttings , as: :parent
-  belongs_to :container
 
   # accepts_nested_attributes_for :cuttings, allow_destroy: true
   # calculates the days to recover a plant 

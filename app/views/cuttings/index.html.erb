@@ -52,7 +52,7 @@
 
   <tbody>
     <% @cuttings.each do |cutting| %>
-    <% if cutting.mother != true && cutting.condition != "dead" && cutting.sold != true %>
+    <% if cutting.mother != true && cutting.condition != "dead" && cutting.sold != true && cutting.container_id == nil %>
       <tr>
         <td id="cutting"><%= cutting.tag %></td>
         <td id="cutting"><%= cutting.name %></td>
@@ -60,7 +60,7 @@
         <td id="cutting"><%= cutting.condition %></td>
         <td id="cutting"><%= cutting.generation %></td>
         <% if cutting.parent_type == "Container"%>
-        <td id="cutting">container <%= cutting.parent.pot_number%></td>
+        <td id="cutting">Container <%= cutting.parent.pot_number%></td>
         <%else%>
         <td id="cutting"><%= cutting.parent.tag %></td>
         <%end%>

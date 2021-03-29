@@ -42,15 +42,44 @@
   <div class="ui breadcrumb">
   <strong><%= link_to 'Edit', edit_container_path(@container), class:"section" %></strong>
   <div class="divider"> / </div>
-  <strong><%= link_to 'Back', containers_path, class:"section" %></strong>
+  <strong><%= link_to 'Back', plants_path, class:"section" %></strong>
   <div class="divider"> / </div>
-  <strong><%= link_to 'New Cutting', new_cutting_path({:name => @container.plant_name , :generation => "1" , :parent_id => @container.id , :parent_type => "Container" }) %></strong>
+  <strong><%= link_to 'New Cutting', new_cutting_path({:name => @container.plant_name , :generation => "1" , :parent_id => @container.id , :parent_type => "Container" , :pot_number => @container.pot_number}) %></strong>
   <br/>
   </div>
   </div>
   <br/>
   </div>
-  
+
   <div class="ui segment">
-  <h3>plantz</h3>
-  </div>
+ <div class="ui three column grid">
+<% @container.plants.each do |plant| %>
+<div class="column">
+<div class="ui fluid card">
+<div class="content">
+<p class="header"><%= link_to plant.name, plant_path(plant) %></p>
+<br/>
+<p>id:<%= plant.tag%></p>
+<p>condition: <%= plant.condition%></p>
+</div>
+</div>
+</div>
+<% end %>
+</div>
+<div class="ui three column grid">
+<% @cuttings.each do |cutting| %>
+<% if cutting.container_id == @container.id %>
+<div class="column">
+<div class="ui fluid card">
+<div class="content">
+<p class="header"><%= link_to cutting.name, cutting_path(cutting) %></p>
+<br/>
+<p>id:<%= cutting.tag%></p>
+<p>condition: <%= cutting.condition%></p>
+</div>
+</div>
+</div>
+<% end %>
+<% end %>
+</div>
+</div>

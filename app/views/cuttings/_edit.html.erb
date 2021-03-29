@@ -57,15 +57,14 @@
     <%= form.check_box :mother %>
   </div>
 
-  <% if params[:parent_type] == "Container" %>
- <div class="field">
+<div class="field">
     <%= form.label :pot_number %>
-    <%= form.number_field :pot_number, value: params[:pot_number], type: "hidden"  %>
-  </div>
-  <%else%>
-  <%end%>
+    <%= form.collection_select :container_id, @container.reject{|container| container.plant_name != cutting.name }, :id , :container_number_and_plant_name, include_blank: true %>
+</div>
 
   <div class="actions">
     <%= form.submit %>
   </div>
 <% end %>
+
+

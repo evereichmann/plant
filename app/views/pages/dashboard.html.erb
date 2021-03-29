@@ -147,7 +147,11 @@
    <% days_between = (end_time - start_time ).to_i %> 
 <tbody>
 <tr>
+<% if cutting.parent_type != "Container"%>
  <td><%= cutting.parent.tag %></td> 
+ <% else %>
+ <td>Container <%= cutting.parent.pot_number %></td>
+ <% end%>
  <td><%= cutting.name %></td>
  <td><%= days_between %> days</td>
 </tr>

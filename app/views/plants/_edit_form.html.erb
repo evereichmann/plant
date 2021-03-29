@@ -51,6 +51,11 @@
     <%= form.number_field :price , step: :any %>
   </div>
   
+<div class="field">
+    <%= form.label :pot_number %>
+    <%= form.collection_select :container_id, @container.reject{|container| container.plant_name != plant.name }, :id , :container_number_and_plant_name, include_blank: true %>
+</div>
+
   <div class="actions">
     <%= form.submit class: "ui button"%>
   </div>
