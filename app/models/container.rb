@@ -10,7 +10,8 @@ class Container < ApplicationRecord
     end  
 
     def number_of_plants
-        in_pot = Cutting.all.select{|c| c.container_id == self.id }
-        self.plants.count + in_pot.count
+        cutting_in_pot = Cutting.all.select{|cutting| cutting.container_id == self.id }
+        plant_in_pot = Plant.all.select{|plant| plant.container_id == self.id }
+        plant_in_pot.count + cutting_in_pot.count
     end    
 end

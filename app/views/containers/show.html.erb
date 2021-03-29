@@ -53,7 +53,8 @@
 
   <div class="ui segment">
  <div class="ui three column grid">
-<% @container.plants.each do |plant| %>
+<% @plants.each do |plant| %>
+<% if plant.container_id == @container.id %>
 <div class="column">
 <div class="ui fluid card">
 <div class="content">
@@ -64,6 +65,7 @@
 </div>
 </div>
 </div>
+<% end %>
 <% end %>
 </div>
 <div class="ui three column grid">
