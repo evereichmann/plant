@@ -14,31 +14,3 @@ require("channels")
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
-
-
-//allow for javascript event listner in Rails application
-document.addEventListener("DOMContentLoaded", function(){
-
-    
-    //hides/adds the submit button on new user page
-    if (document.getElementById('auth') === null){
-        document.getElementById('plant-name-pot').addEventListener('click', function(e){
-            // e.preventDefault()
-            // console.log(e.target.previousElementSibling.value)
-            // document.getElementById('generated-plants').innerHTML=(`<form>${e.target.previousElementSibling.value}</form>`)
-
-        })
-    } else {
-        document.getElementById('auth').addEventListener('input', function(e){
-            if(e.target.value === "newmemberplanthaus"){
-                document.getElementById("new-user-actions").innerHTML = '<button type="submit">Submit</button>'
-            }else{
-            }
-        })
-    }
-    
-  
-
-    
-})
-

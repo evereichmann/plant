@@ -60,13 +60,13 @@
         <td id="cutting"><%= cutting.condition %></td>
         <td id="cutting"><%= cutting.generation %></td>
         <% if cutting.parent_type == "Container"%>
-        <td id="cutting">Container <%= cutting.parent.pot_number%></td>
+        <td id="cutting">Container <%= cutting.parent.pot_number %></td>
         <%else%>
         <td id="cutting"><%= cutting.parent.tag %></td>
         <%end%>
         <td id="cutting"><%= link_to 'Show', cutting %></td>
         <td id="cutting"><%= link_to 'Edit', edit_cutting_path(cutting, {:name => cutting.name , :generation => cutting.generation , :parent_id => cutting.parent_id , :parent_type => cutting.parent_type }) %></td>
-        <td id="cutting"><%= link_to 'Destroy', cutting, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <%# <td id="cutting"><%= link_to 'Destroy', cutting, method: :delete, data: { confirm: 'Are you sure?' } </td> %>
       </tr>
     <% end %>
     <% end %>

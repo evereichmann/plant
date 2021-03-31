@@ -66,7 +66,10 @@
   <td><%= container.number_of_plants %></td>
       <td><%= link_to 'Show', container %></td>
       <td><%= link_to 'Edit', edit_container_path(container) %></td>
+      <% if container.number_of_plants == 0 %>
       <td><%= link_to 'Destroy', container, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% else %> 
+      <%end%>
   </tr>
   <%else%>
   <%end%>
@@ -112,7 +115,7 @@
         <%end%>
         <td id="plant"><%= link_to 'Show', plant %></td>
         <td id="plant"><%= link_to 'Edit', edit_plant_path(plant, {:name => plant.name}) %></td>
-        <td id="plant"><%= link_to 'Destroy', plant, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <%# <td id="plant"><%= link_to 'Destroy', plant, method: :delete, data: { confirm: 'Are you sure?' } </td>%> 
       </tr>
        <% else %>
        <% end %>
@@ -144,7 +147,7 @@
         <td id="cutting"><%= cutting.generation %></td>
         <td id="cutting"><%= link_to 'Show', cutting %></td>
         <td id="cutting"><%= link_to 'Edit', edit_cutting_path(cutting, {:name => cutting.name , :generation => cutting.generation , :parent_id => cutting.parent_id , :parent_type => cutting.parent_type }) %></td>
-        <td id="cutting"><%= link_to 'Destroy', cutting, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <%# <td id="cutting"><%= link_to 'Destroy', cutting, method: :delete, data: { confirm: 'Are you sure?' } </td>%> 
       </tr>
     <% end %>
     <% end %>
