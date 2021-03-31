@@ -27,7 +27,7 @@
 
 <div class="eight wide column">
 <%# not dead and not sold inventory  %>
-<strong><p>Total number of plants:</strong> <%= @plants.select{|plant| plant.condition != 'dead' && plant.sold != true }.length + @cuttings.select{|cutting| cutting.condition != 'dead' && cutting.sold != true}.length %> </p>
+<strong><p>Total Inventory:</strong> <%= @plants.select{|plant| plant.condition != 'dead' && plant.sold != true }.length + @cuttings.select{|cutting| cutting.condition != 'dead' && cutting.sold != true}.length %> </p>
 <strong><p>Total Plants:</strong> <%= @plants.select{|plant| plant.condition != 'dead' && plant.sold != true }.length %> </p>
 <%# not dead or sold cutting %>
 <strong><p>Total Cuttings:</strong> <%= @cuttings.select{|cutting| cutting.condition != 'dead' && cutting.sold != true}.length %> </p>
