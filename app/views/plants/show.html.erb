@@ -98,6 +98,8 @@
   <strong><%= link_to 'New Note', new_plant_note_path({:plant_id => @plant.id}) %></strong>
   <div class="divider"> / </div>
   <strong><%= link_to 'New Cutting', new_cutting_path({:name => @plant.name , :generation => "1" , :parent_id => @plant.id , :parent_type => "Plant" }) %></strong>
+  <div class="divider"> / </div>
+  <strong><%= link_to 'Clone Plant', new_plant_path({:name => @plant.name , :unit_price => @plant.unit_price }) %></strong>
   </div>
 
 <%# ends grid layout %>
